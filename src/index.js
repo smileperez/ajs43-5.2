@@ -1,3 +1,4 @@
+import './js/app';
 import './js/superClassCharacter';
 import './js/classBowman';
 import './js/classDaemon';

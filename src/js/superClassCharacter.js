@@ -30,4 +30,28 @@ export default class Character {
     }
     this._type = type;
   }
+
+  levelUp() {
+    if (this.health <= 0) {
+      throw new Error('Нельзя повысить левел умершего');
+    }
+    this.level += 1;
+    this.attack = Math.trunc(this.attack * 1.2);
+    this.defence = Math.trunc(this.defence * 1.2);
+    this.health = 100;
+  }
+
+  damage(points) {
+    if (this.health <= 0) {
+      throw new Error('Нельзя нанести урон умершему');
+    }
+
+    const damage = Math.trunc(points * (1 - this.defence / 100));
+    if (damage > this.health) {
+      // Защита от чрезвычайного урона, чтобы не было отрицательного здоровья
+      this.health = 0;
+    } else {
+      this.health -= damage;
+    }
+  }
 }

@@ -56,3 +56,12 @@ test('3.3. Должна вылезти ошибка о том, что возмо
     received = new Character('Test', 'Killer');
   }).toThrow(Error('Возможные типы персонажей: Bowerman, Swordsman, Magician, Daemon, Undead, Zombie'));
 });
+
+
+test('4.1. ', () => {
+  const received = {};
+
+  expect(() => {
+    received = new Character('Test', 'Killer');
+  }).toThrow(Error('Возможные типы персонажей: Bowerman, Swordsman, Magician, Daemon, Undead, Zombie'));
+});
