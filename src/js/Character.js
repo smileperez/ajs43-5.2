@@ -1,12 +1,16 @@
 export default class Character {
-  constructor(name, type, health = 100, level = 1) {
+  constructor(name, type, attack, defence) {
+    Character.validateName(name);
+    Character.validateType(type);
     this.name = name;
     this.type = type;
-    this.health = health;
-    this.level = level;
+    this.attack = attack;
+    this.defence = defence;
+    this.health = 100;
+    this.level = 1;
   }
 
-  set name(name) {
+  static validateName(name) {
     if (name === '') {
       throw new Error('Имя не может быть пустым');
     } else if (typeof name !== 'string') {
@@ -16,10 +20,9 @@ export default class Character {
     } else if (name.length > 10) {
       throw new Error('Имя должно быть не более 10 символов');
     }
-    this._name = name;
   }
 
-  set type(type) {
+  static validateType(type) {
     const types = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
     if (type === '') {
       throw new Error('Тип персонажа не может быть пустым');
@@ -28,7 +31,6 @@ export default class Character {
     } else if (types.includes(type) === false) {
       throw new Error('Возможные типы персонажей: Bowerman, Swordsman, Magician, Daemon, Undead, Zombie');
     }
-    this._type = type;
   }
 
   levelUp() {
@@ -45,7 +47,6 @@ export default class Character {
     if (this.health <= 0) {
       throw new Error('Нельзя нанести урон умершему');
     }
-
     const damage = Math.trunc(points * (1 - this.defence / 100));
     if (damage > this.health) {
       // Защита от чрезвычайного урона, чтобы не было отрицательного здоровья

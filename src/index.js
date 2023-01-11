@@ -1,8 +1,7 @@
-import './js/app';
-import './js/superClassCharacter';
-import './js/classBowman';
-import './js/classDaemon';
-import './js/classMagician';
-import './js/classSwordsman';
-import './js/classUndead';
-import './js/classZombie';
+import './js/Character';
+import './js/Bowman';
+import './js/Daemon';
+import './js/Magician';
+import './js/Swordsman';
+import './js/Undead';
+import './js/Zombie';
